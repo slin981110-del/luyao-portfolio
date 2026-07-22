@@ -18,6 +18,8 @@ import { LineSidebar } from "./components/LineSidebar";
 import { AICylinderShowcase } from "./components/AICylinderShowcase";
 import { SoftwareDock } from "./components/SoftwareDock";
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const experiences = [
   {
     period: "2023.10 — 2025.05",
@@ -37,21 +39,21 @@ const works = Array.from({ length: 42 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
   const extension = index === 30 ? "png" : "jpg";
   return {
-    src: `/assets/works-gallery/work-${number}.${extension}`,
+    src: assetUrl(`/assets/works-gallery/work-${number}.${extension}`),
     title: `视觉作品 ${number}`,
     type: "品牌视觉 / 海报设计",
   };
 });
 
 const softwareLogos = [
-  { src: "/assets/software-logos/photoshop.png", name: "Photoshop" },
-  { src: "/assets/software-logos/illustrator.png", name: "Illustrator" },
-  { src: "/assets/software-logos/after-effects.png", name: "After Effects" },
-  { src: "/assets/software-logos/chatgpt.png", name: "ChatGPT" },
-  { src: "/assets/software-logos/midjourney.png", name: "Midjourney" },
-  { src: "/assets/software-logos/jimeng.png", name: "即梦" },
-  { src: "/assets/software-logos/capcut.png", name: "剪映" },
-  { src: "/assets/software-logos/figma.png", name: "Figma" },
+  { src: assetUrl("/assets/software-logos/photoshop.png"), name: "Photoshop" },
+  { src: assetUrl("/assets/software-logos/illustrator.png"), name: "Illustrator" },
+  { src: assetUrl("/assets/software-logos/after-effects.png"), name: "After Effects" },
+  { src: assetUrl("/assets/software-logos/chatgpt.png"), name: "ChatGPT" },
+  { src: assetUrl("/assets/software-logos/midjourney.png"), name: "Midjourney" },
+  { src: assetUrl("/assets/software-logos/jimeng.png"), name: "即梦" },
+  { src: assetUrl("/assets/software-logos/capcut.png"), name: "剪映" },
+  { src: assetUrl("/assets/software-logos/figma.png"), name: "Figma" },
 ];
 
 const profileFacts = [
@@ -243,12 +245,12 @@ function WorkCard({ item, onOpen }) {
 }
 
 const longformProjects = [
-  { src: "/assets/longform/longform-01.jpg", title: "长图作品 01" },
-  { src: "/assets/longform/longform-02.jpg", title: "长图作品 02" },
-  { src: "/assets/longform/longform-03.jpg", title: "长图作品 03" },
-  { src: "/assets/longform/longform-04.jpg", title: "长图作品 04" },
-  { src: "/assets/longform/longform-05.jpg", title: "长图作品 05" },
-  { src: "/assets/longform/longform-06.jpg", title: "长图作品 06" },
+  { src: assetUrl("/assets/longform/longform-01.jpg"), title: "长图作品 01" },
+  { src: assetUrl("/assets/longform/longform-02.jpg"), title: "长图作品 02" },
+  { src: assetUrl("/assets/longform/longform-03.jpg"), title: "长图作品 03" },
+  { src: assetUrl("/assets/longform/longform-04.jpg"), title: "长图作品 04" },
+  { src: assetUrl("/assets/longform/longform-05.jpg"), title: "长图作品 05" },
+  { src: assetUrl("/assets/longform/longform-06.jpg"), title: "长图作品 06" },
 ];
 
 function LongformProject({ project }) {
@@ -260,7 +262,7 @@ function LongformProject({ project }) {
         </div>
         <img
           className="longform-device-frame"
-          src="/assets/longform/phone-frame.png"
+          src={assetUrl("/assets/longform/phone-frame.png")}
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -319,7 +321,7 @@ function LongformShowcase() {
         {showDragHint ? (
           <img
             className={`longform-drag-hint ${isDragHintFading ? "is-fading" : ""}`}
-            src="/assets/longform/drag-hint.png"
+            src={assetUrl("/assets/longform/drag-hint.png")}
             alt=""
             aria-hidden="true"
           />
@@ -375,7 +377,7 @@ function ContactSection() {
         </div>
         <div className="contact-details" aria-label="联系方式">
           <button type="button" className="contact-copy" onClick={() => copyContact("yao731792534")} aria-label="复制微信号 yao731792534">
-            <img className="contact-wechat-icon" src="/assets/ui/wechat-contact.png" alt="" aria-hidden="true" />
+            <img className="contact-wechat-icon" src={assetUrl("/assets/ui/wechat-contact.png")} alt="" aria-hidden="true" />
             <span>yao731792534</span>
             <ArrowRightIcon size={28} weight="light" aria-hidden="true" />
           </button>
@@ -400,7 +402,7 @@ function ContactSection() {
                 "--copy-toast-left": `${copiedContact.toastLeft}px`,
               }}
             >
-              <img src="/assets/ui/copied.png" alt="已复制" />
+              <img src={assetUrl("/assets/ui/copied.png")} alt="已复制" />
             </div>,
             document.body,
           )
@@ -536,7 +538,7 @@ export function App() {
               <div className="profile-media reveal">
                 <p className="eyebrow">02 / PROFILE</p>
                 <figure className="profile-portrait">
-                  <img src="/assets/profile/editorial-portrait.png" alt="黑白编辑风格人物形象" />
+                  <img src={assetUrl("/assets/profile/editorial-portrait.png")} alt="黑白编辑风格人物形象" />
                 </figure>
               </div>
               <div className="profile-copy reveal">

@@ -3,12 +3,14 @@ import { createPortal } from "react-dom";
 import { CaretDownIcon, CaretLeftIcon, CaretRightIcon, CaretUpIcon, XIcon } from "@phosphor-icons/react";
 import "./AICylinderShowcase.css";
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const AI_ITEMS = [
-  { src: "/assets/ai-gallery/ai-01.jpg", title: "AI 视觉作品 01", fit: "cover", ratio: 3792 / 1279 },
-  { src: "/assets/ai-gallery/ai-02.jpg", title: "AI 视觉作品 02", fit: "cover", ratio: 3792 / 1279 },
-  { src: "/assets/ai-gallery/ai-03.jpg", title: "AI 视觉作品 03", fit: "cover", ratio: 1921 / 785 },
-  { src: "/assets/ai-gallery/ai-04.jpg", title: "AI 视觉作品 04", fit: "cover", ratio: 1921 / 936 },
-  { src: "/assets/ai-gallery/ai-05.jpg", title: "AI 视觉作品 05", fit: "cover", ratio: 1920 / 825 },
+  { src: assetUrl("/assets/ai-gallery/ai-01.jpg"), title: "AI 视觉作品 01", fit: "cover", ratio: 3792 / 1279 },
+  { src: assetUrl("/assets/ai-gallery/ai-02.jpg"), title: "AI 视觉作品 02", fit: "cover", ratio: 3792 / 1279 },
+  { src: assetUrl("/assets/ai-gallery/ai-03.jpg"), title: "AI 视觉作品 03", fit: "cover", ratio: 1921 / 785 },
+  { src: assetUrl("/assets/ai-gallery/ai-04.jpg"), title: "AI 视觉作品 04", fit: "cover", ratio: 1921 / 936 },
+  { src: assetUrl("/assets/ai-gallery/ai-05.jpg"), title: "AI 视觉作品 05", fit: "cover", ratio: 1920 / 825 },
 ];
 
 const clamp = (value, min, max) => Math.min(max, Math.max(min, value));

@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { TiltedCard } from "./TiltedCard";
 
+const assetUrl = (path) => `${import.meta.env.BASE_URL}${path.replace(/^\//, "")}`;
+
 const archiveItems = [
-  { src: "/assets/archive-videos-11/motion-01.mp4", alt: "动态作品 01", position: "one" },
-  { src: "/assets/archive-videos-11/motion-02.mp4", alt: "动态作品 02", position: "two" },
-  { src: "/assets/archive-videos-11/motion-03.mp4", alt: "动态作品 03", position: "three" },
-  { src: "/assets/archive-videos-11/motion-04.mp4", alt: "动态作品 04", position: "four" },
-  { src: "/assets/archive-videos-11/motion-05.mp4", alt: "动态作品 05", position: "five" },
-  { src: "/assets/archive-videos-11/motion-06.mp4", alt: "动态作品 06", position: "six" },
-  { src: "/assets/archive-videos-11/motion-07.mp4", alt: "动态作品 07", position: "seven" },
-  { src: "/assets/archive-videos-11/motion-08.mp4", alt: "动态作品 08", position: "eight" },
-  { src: "/assets/archive-videos-11/motion-09.mp4", alt: "动态作品 09", position: "nine" },
-  { src: "/assets/archive-videos-11/motion-10.mp4", alt: "动态作品 10", position: "ten" },
-  { src: "/assets/archive-videos-11/motion-11.mp4", alt: "动态作品 11", position: "eleven" },
+  { src: assetUrl("/assets/archive-videos-11/motion-01.mp4"), alt: "动态作品 01", position: "one" },
+  { src: assetUrl("/assets/archive-videos-11/motion-02.mp4"), alt: "动态作品 02", position: "two" },
+  { src: assetUrl("/assets/archive-videos-11/motion-03.mp4"), alt: "动态作品 03", position: "three" },
+  { src: assetUrl("/assets/archive-videos-11/motion-04.mp4"), alt: "动态作品 04", position: "four" },
+  { src: assetUrl("/assets/archive-videos-11/motion-05.mp4"), alt: "动态作品 05", position: "five" },
+  { src: assetUrl("/assets/archive-videos-11/motion-06.mp4"), alt: "动态作品 06", position: "six" },
+  { src: assetUrl("/assets/archive-videos-11/motion-07.mp4"), alt: "动态作品 07", position: "seven" },
+  { src: assetUrl("/assets/archive-videos-11/motion-08.mp4"), alt: "动态作品 08", position: "eight" },
+  { src: assetUrl("/assets/archive-videos-11/motion-09.mp4"), alt: "动态作品 09", position: "nine" },
+  { src: assetUrl("/assets/archive-videos-11/motion-10.mp4"), alt: "动态作品 10", position: "ten" },
+  { src: assetUrl("/assets/archive-videos-11/motion-11.mp4"), alt: "动态作品 11", position: "eleven" },
 ];
 
 const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
