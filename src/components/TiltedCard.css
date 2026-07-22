@@ -1,0 +1,49 @@
+.tilted-card-figure {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  aspect-ratio: 9 / 16;
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+
+.tilted-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #f3f4f6;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  will-change: transform;
+  transition: box-shadow 380ms ease;
+}
+
+.archive-card:hover .tilted-card-inner,
+.archive-card:focus-visible .tilted-card-inner {
+  box-shadow: 0 28px 70px rgba(20, 31, 53, 0.18);
+}
+
+.tilted-card-caption {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  padding: 5px 10px;
+  border: 1px solid rgba(13, 17, 25, 0.08);
+  border-radius: 999px;
+  color: #2d2d2d;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 24px rgba(13, 17, 25, 0.1);
+  font-size: 10px;
+  white-space: nowrap;
+  backdrop-filter: blur(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tilted-card-inner {
+    transform: none !important;
+    transition: none;
+  }
+}

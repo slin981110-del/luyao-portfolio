@@ -1,0 +1,299 @@
+.ai-showcase {
+  min-height: 100vh;
+  padding: clamp(168px, 13vw, 220px) 0 clamp(96px, 9vw, 150px);
+  border-top: 1px solid var(--line);
+  background: #fff;
+  overflow: hidden;
+}
+
+.ai-showcase-title {
+  position: absolute;
+  top: clamp(38px, 4.5vw, 72px);
+  left: 32px;
+  z-index: 4;
+  display: grid;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(40px, 4.95vw, 76px);
+  font-weight: 430;
+  line-height: .78;
+  letter-spacing: .01em;
+}
+
+.ai-showcase-title span:first-child {
+  padding-bottom: 16px;
+}
+
+.ai-showcase-title span:last-child {
+  padding-left: clamp(32px, 4.9vw, 78px);
+  margin-top: clamp(-40px, -4.2vw, -24px);
+  font-size: clamp(24px, 3.1vw, 48px);
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+.ai-cylinder-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(760px, 82vw, 1080px);
+  background: #fff;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-x;
+  user-select: none;
+  isolation: isolate;
+}
+
+.ai-cylinder-stage:active {
+  cursor: grabbing;
+}
+
+.ai-cylinder-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 13%;
+  z-index: -1;
+  width: min(58vw, 940px);
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(18, 28, 47, .09), rgba(18, 28, 47, 0) 70%);
+  filter: blur(17px);
+  transform: translateX(-50%);
+}
+
+.ai-cylinder-viewport {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  perspective: 1350px;
+  transform-style: preserve-3d;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, #000 13%, #000 87%, transparent 100%);
+}
+
+.ai-cylinder-card {
+  position: absolute;
+  width: clamp(390px, 50vw, 820px);
+  aspect-ratio: var(--ai-card-ratio, 2.965);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.ai-cylinder-card:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 9px;
+}
+
+.ai-cylinder-card-visual {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: clamp(13px, 1.4vw, 22px);
+  transform-style: preserve-3d;
+  will-change: transform, filter;
+}
+
+.ai-cylinder-depth,
+.ai-cylinder-face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: inherit;
+}
+
+.ai-cylinder-depth {
+  border: 1px solid rgba(53, 58, 69, .14);
+  background: #cfd3da;
+}
+
+.ai-cylinder-depth--back {
+  transform: translateZ(-4px);
+}
+
+.ai-cylinder-depth--middle {
+  background: #e8eaf0;
+  transform: translateZ(-2px);
+}
+
+.ai-cylinder-face {
+  overflow: hidden;
+  border: 1px solid rgba(20, 24, 32, .1);
+  background: #f3f4f7;
+  box-shadow: 0 30px 70px rgba(18, 28, 47, .16), inset 0 1px 0 rgba(255, 255, 255, .72);
+  transform: translateZ(0);
+}
+
+.ai-cylinder-face img {
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ai-cylinder-face--cover img {
+  object-fit: cover;
+}
+
+.ai-cylinder-face--contain img {
+  object-fit: contain;
+  background: #f4f5f7;
+}
+
+.ai-cylinder-control {
+  position: absolute;
+  right: clamp(24px, 4vw, 58px);
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .9);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: color 220ms ease, border-color 220ms ease, transform 350ms var(--ease);
+}
+
+.ai-cylinder-control:hover,
+.ai-cylinder-control:focus-visible {
+  color: var(--blue);
+  border-color: var(--blue);
+  transform: scale(1.06);
+}
+
+.ai-cylinder-control--previous {
+  top: calc(50% - 54px);
+}
+
+.ai-cylinder-control--next {
+  top: calc(50% + 10px);
+}
+
+.ai-cylinder-counter {
+  position: absolute;
+  right: 32px;
+  bottom: clamp(40px, 4.8vw, 68px);
+  z-index: 20;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+.ai-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: rgba(255, 255, 255, .92);
+  backdrop-filter: blur(22px);
+  animation: aiLightboxIn 260ms ease both;
+}
+
+.ai-lightbox-figure {
+  width: min(82vw, 1180px);
+  height: min(78vh, 760px);
+  display: grid;
+  place-items: center;
+  margin: 0;
+}
+
+.ai-lightbox-figure img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 34px 90px rgba(18, 28, 47, .18);
+}
+
+.ai-lightbox-figure figcaption {
+  position: absolute;
+  right: 32px;
+  bottom: 24px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  font-variant-numeric: tabular-nums;
+}
+
+.ai-lightbox-close,
+.ai-lightbox-nav {
+  position: absolute;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(18, 28, 47, .14);
+  border-radius: 50%;
+  color: var(--ink);
+  background: rgba(255, 255, 255, .9);
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, transform 220ms ease;
+}
+
+.ai-lightbox-close:hover,
+.ai-lightbox-nav:hover,
+.ai-lightbox-close:focus-visible,
+.ai-lightbox-nav:focus-visible {
+  color: var(--blue);
+  border-color: var(--blue);
+  transform: scale(1.06);
+}
+
+.ai-lightbox-close {
+  top: 24px;
+  right: 32px;
+  width: 46px;
+  height: 46px;
+}
+
+.ai-lightbox-nav {
+  top: 50%;
+  width: 52px;
+  height: 52px;
+  transform: translateY(-50%);
+}
+
+.ai-lightbox-nav:hover,
+.ai-lightbox-nav:focus-visible {
+  transform: translateY(-50%) scale(1.06);
+}
+
+.ai-lightbox-nav--previous {
+  left: 28px;
+}
+
+.ai-lightbox-nav--next {
+  right: 28px;
+}
+
+@keyframes aiLightboxIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .ai-cylinder-card {
+    width: min(76vw, 650px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai-cylinder-card,
+  .ai-cylinder-card-visual {
+    transition: none;
+  }
+}
