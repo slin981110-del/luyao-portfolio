@@ -516,7 +516,13 @@ export function App() {
         <a href="#top" onClick={closeMenu}>首页</a>
         <a href="#resume" onClick={closeMenu}>个人简介</a>
         <a href="#experience" onClick={closeMenu}>工作经历</a>
-        <a href="#works" onClick={closeMenu}>精选作品</a>
+        <div className="mobile-menu-works" aria-label="作品分类">
+          <span>作品</span>
+          <a href="#archive" onClick={closeMenu}>视频</a>
+          <a href="#works" onClick={closeMenu}>海报</a>
+          <a href="#longform" onClick={closeMenu}>长图</a>
+          <a href="#ai" onClick={closeMenu}>AI</a>
+        </div>
         <a href="#contact" onClick={closeMenu}>联系方式</a>
       </nav>
 
